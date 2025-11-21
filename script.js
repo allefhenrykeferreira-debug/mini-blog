@@ -44,3 +44,11 @@ savePost.onclick = () => {
 };
 
 renderPosts();
+
+resetBtn.onclick = () => {
+    if (confirm("Tem certeza que quer apagar todos os posts?")) {
+        localStorage.removeItem("posts");
+        posts = [];
+        renderPosts();
+    }
+};
