@@ -1,53 +1,57 @@
 const newPostBtn = document.getElementById("newPostBtn");
 const resetBtn = document.getElementById("resetBtn");
-const savePostBtn = document.getElementById("savePost");
+const createPost = document.getElementById("createPost");
+const savePost = document.getElementById("savePost");
+const postsSection = document.getElementById("posts");
 
-const createPostSection = document.getElementById("createPost");
-const postsContainer = document.getElementById("posts");
+let posts = JSON.parse(localStorage.getItem("posts")) || [];
 
-function loadPosts() {
-    postsContainer.innerHTML = "";
-    const posts = JSON.parse(localStorage.getItem("posts") || "[]");
-
-    posts.forEach(post => {
+function renderPosts() {
+    postsSection.innerHTML = "";
+    posts.forEach((post) => {
         const div = document.createElement("div");
-        div.className = "post";
-        div.innerHTML = `<h3>${post.title}</h3><p>${post.content}</p>`;
-        postsContainer.appendChild(div);
+        div.classList.add("post");
+
+        div.innerHTML = `
+            <h2>${post.title}</h2>
+            ${post.image ? `<img src="${post.image}" class="post-img">` : ""}
+            <p>${post.content}</p>
+        `;
+
+        postsSection.appendChild(div);
     });
 }
 
 newPostBtn.onclick = () => {
-    createPostSection.classList.toggle("hidden");
+    createPost.classList.toggle("hidden");
 };
 
-savePostBtn.onclick = () => {
+savePost.onclick = () => {
     const title = document.getElementById("postTitle").value;
     const content = document.getElementById("postContent").value;
+    const image = document.getElementById("postImage").value;
 
     if (!title || !content) {
-        alert("Preencha tudo, pô 😂");
+        alert("Preencha tudo!");
         return;
     }
 
-    const posts = JSON.parse(localStorage.getItem("posts") || "[]");
-    posts.push({ title, content });
-
+    posts.push({ title, content, image });
     localStorage.setItem("posts", JSON.stringify(posts));
 
     document.getElementById("postTitle").value = "";
     document.getElementById("postContent").value = "";
-
-    createPostSection.classList.add("hidden");
-
-    loadPosts();
+    document.getElementById("postImage").value = "";
+    createPost.classList.add("hidden");
+    renderPosts();
 };
+
+renderPosts();
 
 resetBtn.onclick = () => {
-    if (confirm("Tem certeza? Vai apagar tudo mesmo! 😳")) {
+    if (confirm("Tem certeza que quer apagar todos os posts?")) {
         localStorage.removeItem("posts");
-        loadPosts();
+        posts = [];
+        renderPosts();
     }
 };
-
-loadPosts();
