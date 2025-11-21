@@ -1,1 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Mini Blog do Állef</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Mini Blog</h1>
+        <button id="newPostBtn">Novo Post</button>
+    </header>
 
+    <section id="createPost" class="hidden">
+        <h2>Criar Novo Post</h2>
+        <input type="text" id="postTitle" placeholder="Título do post">
+        <textarea id="postContent" placeholder="Conteúdo..."></textarea>
+        <button id="savePost">Publicar</button>
+    </section>
+
+    <section id="posts"></section>
+
+    <script src="script.js"></script>
+</body>
+</html>
