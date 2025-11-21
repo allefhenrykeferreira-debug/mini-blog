@@ -1,32 +1,83 @@
 body {
     font-family: Arial, sans-serif;
-    background: #f3f3f3;
+    background: #f2f2f2;
     margin: 0;
-    padding: 20px;
+    padding: 0;
 }
 
 header {
+    background: #222;
+    padding: 20px;
+    color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .btn-group button {
+    padding: 10px 15px;
     margin-left: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+.danger {
+    background: #d9534f;
+    color: white;
+}
+
+#newPostBtn {
+    background: #0275d8;
+    color: white;
 }
 
 .hidden {
     display: none;
 }
 
+#createPost {
+    background: white;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 10px;
+}
+
+#createPost input,
+#createPost textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 6px;
+    border: 1px solid #bbb;
+}
+
+#savePost {
+    background: #5cb85c;
+    color: white;
+    border: none;
+    padding: 12px;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 6px;
+}
+
 #posts {
-    margin-top: 20px;
+    padding: 20px;
 }
 
 .post {
     background: white;
     padding: 15px;
-    margin-bottom: 10px;
-    border-radius: 8px;
-    box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.post-img {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 10px;
+    margin: 10px 0;
 }
