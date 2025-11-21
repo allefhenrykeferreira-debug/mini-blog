@@ -1,4 +1,5 @@
 const newPostBtn = document.getElementById("newPostBtn");
+const resetBtn = document.getElementById("resetBtn");
 const createPost = document.getElementById("createPost");
 const savePost = document.getElementById("savePost");
 const postsSection = document.getElementById("posts");
