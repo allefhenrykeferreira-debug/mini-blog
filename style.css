@@ -43,3 +43,17 @@ savePost.onclick = () => {
 };
 
 renderPosts();
+
+    .btn-group {
+    display: flex;
+    gap: 10px;
+}
+
+.danger {
+    background: #d9534f;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
