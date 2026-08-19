@@ -1,30 +1,89 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <title>Mini Blog do Állef</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0b0f14" />
+  <title>Bedrock Diamond Finder</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <main class="shell">
+    <section class="hero">
+      <span class="badge">Minecraft Bedrock • experimental</span>
+      <h1>💎 Bedrock Diamond Finder</h1>
+      <p>Gera pontos de mineração próximos da sua posição e salva quais testes funcionaram.</p>
+    </section>
 
-<header>
-    <h1>Mini Blog</h1>
-    <div class="btn-group">
-        <button id="newPostBtn">Novo Post</button>
-        <button id="resetBtn" class="danger">Resetar Posts</button>
-    </div>
-</header>
+    <section class="card form-card">
+      <label>Seed do mundo
+        <input id="seed" inputmode="text" value="-6812032716845755984" />
+      </label>
 
-<section id="createPost" class="hidden">
-    <h2>Criar Novo Post</h2>
-    <input type="text" id="postTitle" placeholder="Título do post">
-    <textarea id="postContent" placeholder="Conteúdo..."></textarea>
-    <input type="text" id="postImage" placeholder="URL da imagem (opcional)">
-    <button id="savePost">Publicar</button>
-</section>
+      <div class="grid-2">
+        <label>X atual
+          <input id="x" type="number" value="0" />
+        </label>
+        <label>Z atual
+          <input id="z" type="number" value="0" />
+        </label>
+      </div>
 
-<section id="posts"></section>
+      <div class="grid-2">
+        <label>Raio de busca
+          <select id="radius">
+            <option value="64">64 blocos</option>
+            <option value="128" selected>128 blocos</option>
+            <option value="256">256 blocos</option>
+          </select>
+        </label>
 
-<script src="script.js"></script>
+        <label>Altura alvo
+          <select id="y">
+            <option value="-58">Y -58</option>
+            <option value="-59" selected>Y -59</option>
+            <option value="-57">Y -57</option>
+            <option value="-56">Y -56</option>
+          </select>
+        </label>
+      </div>
+
+      <button id="findBtn" class="primary">Encontrar pontos</button>
+      <p class="warning">⚠️ Previsão experimental. Não é leitura exata dos blocos do Bedrock atual.</p>
+    </section>
+
+    <section class="card">
+      <div class="section-title">
+        <h2>Melhores pontos</h2>
+        <button id="clearTests" class="ghost">Limpar testes</button>
+      </div>
+      <div id="results" class="results empty">
+        Coloca tua posição e manda buscar, minerador 😑⛏️
+      </div>
+    </section>
+
+    <section class="card small">
+      <h2>Como testar</h2>
+      <p>Vai até o ponto, cava alguns blocos ao redor e marca ✅ se encontrou diamante ou ❌ se não encontrou. O histórico fica salvo no celular.</p>
+      <p class="tiny">A lógica atual usa um gerador determinístico simples baseado na seed. Serve pra experimento e comparação, não como garantia.</p>
+    </section>
+  </main>
+
+  <template id="resultTemplate">
+    <article class="result-item">
+      <div>
+        <div class="rank"></div>
+        <div class="coords"></div>
+        <div class="meta"></div>
+      </div>
+      <div class="actions">
+        <button class="copy">Copiar</button>
+        <button class="hit" title="Achei diamante">✅</button>
+        <button class="miss" title="Não achei">❌</button>
+      </div>
+    </article>
+  </template>
+
+  <script src="script.js"></script>
 </body>
 </html>
